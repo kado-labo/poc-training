@@ -1,0 +1,27 @@
+apiVersion: io.orquestra.workflow/1.0.0
+
+name: exercise-1
+
+imports:
+ - name: poc-training
+   type: git
+   prameters:
+   repository: "git@github.com:kado-labo/poc-training.git"
+   branch: "master"
+
+steps:
+- name: step1
+  config:
+   runtime:
+    language: python3
+    imports: [poc-training]
+    parameters:
+     file: poc-training/exercise-1.py
+     function: welcome
+  outputs:
+  - name: welcome
+    type: message
+
+types:
+- message
+
